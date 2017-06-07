@@ -21,7 +21,7 @@
         <td align="left">{$call_waiting.INPUT}</td>
     </tr>
     <tr class="letra12">
-        <td align="left"><b style ="color:#E35332; font-weigth:bold;font-size:12px;font-family:'Lucida Console';">{$TAG_CALL_FORW_CONF}</b></td>
+        <td align="left"><b class='form-label-style'>{$TAG_CALL_FORW_CONF}</b></td>
     </tr>
     <tr class="letra12">
         <td align="left"><b>{$call_forward.LABEL}:</b></td>
@@ -36,7 +36,7 @@
         <td align="left">{$call_forward_B.INPUT} {$phone_number_CFB.INPUT}</td>
     </tr>
     <tr class="letra12">
-        <td align="left"><b style ="color:#E35332; font-weigth:bold;font-size:12px;font-family:'Lucida Console';">{$TAG_CALL_MON_SET}</b></td>
+        <td align="left"><b class='form-label-style'>{$TAG_CALL_MON_SET}</b></td>
     </tr>
     <tr class="letra12">
         <td align="left"><b>{$recording_in_external.LABEL}:</b></td>
