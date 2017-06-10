@@ -26,7 +26,7 @@
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
   $Id: index.php,v 1.1 2010-08-09 10:08:51 Mercy Anchundia manchundia@palosanto.com Exp $ */
-//include elastix framework
+//include issabel framework
 include_once "libs/paloSantoForm.class.php";
 
 function _moduleContent(&$smarty, $module_name)
@@ -49,7 +49,7 @@ function _moduleContent(&$smarty, $module_name)
 
     //conexion resource
     global $pACL;
-    $user = isset($_SESSION['elastix_user'])?$_SESSION['elastix_user']:"";
+    $user = isset($_SESSION['issabel_user'])?$_SESSION['issabel_user']:"";
     $extension = $pACL->getUserExtension($user);
     $isAdministrator = $pACL->isUserAdministratorGroup($user);
     if($extension=="" || is_null($extension)){
