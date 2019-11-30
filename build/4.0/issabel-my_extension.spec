@@ -12,7 +12,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-root
 BuildArch: noarch
 Requires(pre): issabel-framework >= 2.2.0-18
 Requires: yum
-Requires: issabelPBX >= 2.11.0-1
+#Requires: issabelPBX >= 2.11.0-1
 
 Obsoletes: elastix-my_extension
 Provides: elastix-my_extension
