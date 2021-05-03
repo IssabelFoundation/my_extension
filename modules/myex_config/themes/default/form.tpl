@@ -1,4 +1,4 @@
-<table width="100%" border="0" cellspacing="0" cellpadding="4" align="center">
+<table width="99%" border="0" cellspacing="0" cellpadding="4" align="center">
     <tr class="letra12">
         {if $mode eq 'input'}
         <td align="left">
@@ -8,7 +8,7 @@
         {/if}
     </tr>
 </table>
-<table class="tabForm" style="font-size: 16px;" width="100%" >
+<table class="tabForm" style="font-size: 16px;" width="99%" >
     <tr class="letra12">
         <td  align="left" colspan=2;><br /><b style ="color:#E35332; font-weigth:bold;font-size:15px;">{$EXTENSION}</b><br /><br /></td>
     </tr>
