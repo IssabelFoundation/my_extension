@@ -60,6 +60,9 @@ $arrLangModule=array(
 "On Demand Recording  option is not valid" => "On Demand Recording  option is not valid",
 "Record Priority Policy is not numeric" => "Record Priority Policy is not numeric",
 "Record Priority Policy must be a value between 0 and 20" => "Record Priority Policy must be a value between 0 and 20",
-"Error processing Recording options" => "Error processing Recording options"
+"Error processing Recording options" => "Error processing Recording options",
+"Forward" => "Forward",
+"General" => "General",
+"Recording" => "Recording",
 );
 ?>

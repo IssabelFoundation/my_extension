@@ -1,74 +1,93 @@
-<table width="99%" border="0" cellspacing="0" cellpadding="4" align="center">
-    <tr class="letra12">
+<div class='container-fluid'>
+<div class='row'>
+<div class='col-md-4'>
+<legend>{$EXTENSION}</legend>
+</div>
+<div class='col-md-7'>
         {if $mode eq 'input'}
         <td align="left">
             <input class="button" type="submit" name="save_new" value="{$SAVE}">&nbsp;&nbsp;
             <input class="button" type="submit" name="cancel" value="{$CANCEL}">
         </td>
         {/if}
-    </tr>
-</table>
-<table class="tabForm" style="font-size: 16px;" width="99%" >
-    <tbody>
-    <tr class="letra12">
-        <td  align="left" colspan=2;><legend>{$EXTENSION}</legend></td>
-    </tr>
-    <tr class="letra12">
-        <td align="left" width="300px"><b>{$do_not_disturb.LABEL}:</b></td>
-        <td align="left">{$do_not_disturb.INPUT}</td>
-    </tr>
-    <tr class="letra12">
-        <td align="left"><b>{$call_waiting.LABEL}:</b></td>
-        <td align="left">{$call_waiting.INPUT}</td>
-    </tr>
-    <tr class="letra12">
-        <td align="left" colspan=2><legend>{$TAG_CALL_FORW_CONF}</legend></td>
-    </tr>
-    <tr class="letra12">
-        <td align="left"><b>{$call_forward.LABEL}:</b></td>
-        <td align="left">{$call_forward.INPUT} {$phone_number_CF.INPUT}</td>
-    </tr>
-    <tr class="letra12">
-        <td align="left"><b>{$call_forward_U.LABEL}:</b></td>
-        <td align="left">{$call_forward_U.INPUT} {$phone_number_CFU.INPUT}</td>
-    </tr>
-    <tr class="letra12">
-        <td align="left"><b>{$call_forward_B.LABEL}:</b></td>
-        <td align="left">{$call_forward_B.INPUT} {$phone_number_CFB.INPUT}</td>
-    </tr>
-    <tr class="letra12">
-        <td align="left" colspan=2><legend>{$TAG_CALL_MON_SET}</legend></td>
-    </tr>
-    <tr class="letra12">
-        <td align="left"><b>{$recording_in_external.LABEL}:</b></td>
-        <td align="left">{$recording_in_external.INPUT}</td>
-    </tr>
-    <tr class="letra12">
-        <td align="left"><b>{$recording_out_external.LABEL}:</b></td>
-        <td align="left">{$recording_out_external.INPUT}</td>
-    </tr>
-    <tr class="letra12">
-        <td align="left"><b>{$recording_in_internal.LABEL}:</b></td>
-        <td align="left">{$recording_in_internal.INPUT}</td>
-    </tr>
-    <tr class="letra12">
-        <td align="left"><b>{$recording_out_internal.LABEL}:</b></td>
-        <td align="left">{$recording_out_internal.INPUT}</td>
-    </tr>
-    <tr class="letra12">
-        <td align="left"><b>{$recording_ondemand.LABEL}:</b></td>
-        <td align="left">{$recording_ondemand.INPUT}</td>
-    </tr>
-    <tr class="letra12">
-        <td align="left"><b>{$recording_priority.LABEL}:</b></td>
-        <td align="left">
+</div>
+</div>
+</div>
+ 
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs mymargin" role="tablist">
+    <li role="presentation" class="active"><a href="#general" aria-controls="general" role="tab" data-toggle="tab">{$GENERAL}</a></li>
+    <li role="presentation"><a href="#forward" aria-controls="forward" role="tab" data-toggle="tab">{$FORWARD}</a></li>
+    <li role="presentation"><a href="#recording" aria-controls="recording" role="tab" data-toggle="tab">{$RECORDING}</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content bordered">
+    <div role="tabpanel" class="tab-pane active" id="general">
+        <div class='container-fluid'>
+        <div class='row'>
+          <div class='col-md-4'><b>{$do_not_disturb.LABEL}:</b></div>
+          <div class='col-md-7'>{$do_not_disturb.INPUT}</div>
+        </div>
+
+        <div class='row'>
+          <div class='col-md-4'><b>{$call_waiting.LABEL}:</b></div>
+          <div class='col-md-7'>{$call_waiting.INPUT}</div>
+        </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="forward">
+        <div class='container-fluid'>
+            <div class='row'>
+                <div class='col-md-4'><b>{$call_forward.LABEL}:</b></div>
+                <div class='col-md-7'>{$call_forward.INPUT} {$phone_number_CF.INPUT}</div>
+            </div>
+            <div class='row'>
+                <div class='col-md-4'><b>{$call_forward_U.LABEL}:</b></div>
+                <div class='col-md-7'>{$call_forward_U.INPUT} {$phone_number_CFU.INPUT}</div>
+            </div>
+            <div class='row'>
+                <div class='col-md-4'><b>{$call_forward_B.LABEL}:</b></div>
+                <div class='col-md-7'>{$call_forward_B.INPUT} {$phone_number_CFB.INPUT}</div>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="recording">
+        <div class='container-fluid'>
+    <div class='row'>
+        <div class='col-md-4'><b>{$recording_in_external.LABEL}:</b></div>
+        <div class='col-md-7'>{$recording_in_external.INPUT}</div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'><b>{$recording_out_external.LABEL}:</b></div>
+        <div class='col-md-7'>{$recording_out_external.INPUT}</div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'><b>{$recording_in_internal.LABEL}:</b></div>
+        <div class='col-md-7'>{$recording_in_internal.INPUT}</div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'><b>{$recording_out_internal.LABEL}:</b></div>
+        <div class='col-md-7'>{$recording_out_internal.INPUT}</div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'><b>{$recording_ondemand.LABEL}:</b></div>
+        <div class='col-md-7'>{$recording_ondemand.INPUT}</div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4'><b>{$recording_priority.LABEL}:</b></div>
+        <div class='col-md-7'>
             <div style="width:270px">
                 <span id="recording_priority_amount" name="recording_priority_amount" style="border:0; color:#f6931f; font-weight:bold; float: right">{$recording_priority_value}</span>
                 <div id="slider" style="width:240px;"></div>
                 {$recording_priority.INPUT}
             </div>    
-        </td>
-    </tr>
-    <tr><td colspan=2></td></tr>
-    </tbody> 
-</table>
+        </div>
+    </div>
+ 
+        </div>
+    </div>
+  </div>
+
+</div>
+

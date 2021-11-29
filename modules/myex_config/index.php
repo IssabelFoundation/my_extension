@@ -25,6 +25,10 @@ include_once "libs/paloSantoForm.class.php";
 
 function _moduleContent(&$smarty, $module_name)
 {
+    global $pDB;
+    include_once "libs/paloSantoConfig.class.php";
+    include_once "libs/misc.lib.php";
+
     //include module files
     include_once "modules/$module_name/configs/default.conf.php";
     include_once "modules/$module_name/libs/paloSantoMyExtension.class.php";
@@ -53,6 +57,16 @@ function _moduleContent(&$smarty, $module_name)
 	  $smarty->assign("mb_message", "<b>"._tr("contact_admin")."</b>");
 	return "";
     }
+
+    $pConfig = new paloConfig("/etc", "amportal.conf", "=", "[[:space:]]*=[[:space:]]*");
+    $arrConfig = $pConfig->leer_configuracion(false);
+
+    $dsnAsterisk = $arrConfig['AMPDBENGINE']['valor']."://".
+                   $arrConfig['AMPDBUSER']['valor']. ":".
+                   $arrConfig['AMPDBPASS']['valor']. "@".
+                   $arrConfig['AMPDBHOST']['valor']."/asterisk";
+
+    $pDB     = new paloDB($dsnAsterisk);
   
     //actions
     $action = getAction();
@@ -98,14 +112,17 @@ function viewFormMyExtension($smarty, $module_name, $local_templates_dir, $arrCo
     $smarty->assign("SAVE", _tr("Save Configuration"));
     $smarty->assign("EDIT", _tr("Edit"));
     $smarty->assign("CANCEL", _tr("Cancel"));
+    $smarty->assign("GENERAL", _tr("General"));
+    $smarty->assign("FORWARD", _tr("Forward"));
+    $smarty->assign("RECORDING", _tr("Recording"));
     $smarty->assign("icon", "images/list.png");//extension
     $smarty->assign("EXTENSION",_tr("SETTINGS FOR YOUR EXTENSION:")." ".$extensionCID." (".$extension.")");//extension
     $smarty->assign("TAG_CALL_FORW_CONF", _tr("Call Forward Configuration"));
     $smarty->assign("TAG_CALL_MON_SET", _tr("Call Monitor Settings"));
     $smarty->assign("recording_priority_value",$_DATA['recording_priority']);
-    
+   
     $htmlForm = $oForm->fetchForm("$local_templates_dir/form.tpl",_tr("My Extension"), $_DATA);
-    return "<form  method='POST' style='margin-bottom:0;' action='?menu=$module_name'>".$htmlForm."</form>";
+    return "<form method='POST' style='margin-bottom:0;' action='?menu=$module_name'>".$htmlForm."</form>";
 }
 
 function saveNewMyExtension($smarty, $module_name, $local_templates_dir, $arrConf, $extension, $isAdministrator)
@@ -223,21 +240,21 @@ function createFieldForm()
             "phone_number_CF"     => array( "LABEL"                  => _tr("Call Forward"),
                                             "REQUIRED"               => "no",
                                             "INPUT_TYPE"             => "TEXT",
-                                            "INPUT_EXTRA_PARAM"      => array("style" => "width:190px"),
+                                            "INPUT_EXTRA_PARAM"      => array("style" => "width:190px; padding:6px 12px;"),
                                             "VALIDATION_TYPE"        => "text",
                                             "VALIDATION_EXTRA_PARAM" => ""
                                             ),
             "phone_number_CFU"     => array( "LABEL"                 => _tr("Call Forward on Unavailable"),
                                             "REQUIRED"               => "no",
                                             "INPUT_TYPE"             => "TEXT",
-                                            "INPUT_EXTRA_PARAM"      => array("style" => "width:190px"),
+                                            "INPUT_EXTRA_PARAM"      => array("style" => "width:190px; padding:6px 12px;"),
                                             "VALIDATION_TYPE"        => "text",
                                             "VALIDATION_EXTRA_PARAM" => ""
                                             ),
             "phone_number_CFB"     => array( "LABEL"                 => _tr("Call Forward on Busy"),
                                             "REQUIRED"               => "no",
                                             "INPUT_TYPE"             => "TEXT",
-                                            "INPUT_EXTRA_PARAM"      => array("style" => "width:190px"),
+                                            "INPUT_EXTRA_PARAM"      => array("style" => "width:190px; padding:6px 12px;"),
                                             "VALIDATION_TYPE"        => "text",
                                             "VALIDATION_EXTRA_PARAM" => ""
                                             ),
