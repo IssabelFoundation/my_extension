@@ -69,5 +69,10 @@ $arrLangModule=array(
 "Forward" => "Desvíos",
 "General" => "General",
 "Recording" => "Grabación",
+"QR Code" => "Código QR",
+"Issabel Host/IP Address" => "Dirección IP/Host del servidor Issabel",
+"Phone Brand" => "Modelo de Teléfono",
+"Add Hostname" => "Añadir Nombre de Host",
+"Display QR Code" => "Mostrar Código QR"
 );
 ?>

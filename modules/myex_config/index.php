@@ -26,6 +26,7 @@ include_once "libs/paloSantoForm.class.php";
 function _moduleContent(&$smarty, $module_name)
 {
     global $pDB;
+    global $arrLang;
     include_once "libs/paloSantoConfig.class.php";
     include_once "libs/misc.lib.php";
 
@@ -67,12 +68,50 @@ function _moduleContent(&$smarty, $module_name)
                    $arrConfig['AMPDBHOST']['valor']."/asterisk";
 
     $pDB     = new paloDB($dsnAsterisk);
-  
+
+    if(file_exists("modules/qr_batch/libs/IssabelQRConfig.class.php")) {
+        require_once("modules/qr_batch/libs/IssabelQRConfig.class.php");
+        $myQR = new IssabelQRConfig();
+        $allips = $myQR->getIPs();
+        $templates = $myQR->getAvailableTemplates();
+        $arrLangEscaped = array_map('escapeQuote', $arrLang);
+
+        $smarty->assign(array(
+             'ISSABEL_HOST_IP'   => _tr("Issabel Host/IP Address"),
+             'QRCODE'            => _tr("QR Code"),
+             'ALL_IP'            => $allips,
+             'TEMPLATES'         => $templates,
+             'BRAND'             => _tr("Phone Brand"),
+             'CLOSE'             => _tr("Close"),
+             'LANG'              => $arrLangEscaped,
+             'GENERATEQR'        => _tr("Display QR Code"),
+             'SHOWQR'            => 1
+         ));
+    } else {
+        $smarty->assign(array('SHOWQR'=>0));
+    }
+
     //actions
-    $action = getAction();
+    $action = $_REQUEST['action'];
     $content = "";
 
     switch($action){
+        case "qrcode":
+            $sPeticionSQL="select data from sip where keyword='secret' and id=?";
+            $result = $pDB->getFirstRowQuery($sPeticionSQL, TRUE, array($extension));
+            if(count($result)>0) {
+                $secret = $result['data'];
+            } else {
+                $secret = '';
+            }
+            $template = $_REQUEST['template'];
+            $asteriskip = $_REQUEST['asteriskip'];
+            $template = preg_replace("/</","",$template);
+            $asteriskip = preg_replace("/</","",$asteriskip);
+            $xmltemplate = $myQR->getTemplate($template);
+            $qrcode = $myQR->generateQR($extension,$name,$secret,$asteriskip,$xmltemplate);
+            die($qrcode);
+            break;
         case "save_new":
             $content = saveNewMyExtension($smarty, $module_name, $local_templates_dir, $arrConf, $extension, $isAdministrator);
             break;
@@ -304,11 +343,8 @@ function createFieldForm()
     return $arrFields;
 }
 
-function getAction()
-{
-    if(getParameter("save_new")) //Get parameter by POST (submit)
-        return "save_new";
-    else
-        return "report"; //cancel
+function escapeQuote($val) {
+   $val = addcslashes($val, '"');
+   return $val;
 }
 ?>

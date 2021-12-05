@@ -1,5 +1,34 @@
 $(document).ready(
     function(){
+      $('#imgqrcode').hide();
+      $('#btngenerate').click(function(e) {
+          e.preventDefault();
+          template = $('#template').val();
+          asteriskip = $('#asteriskip').val();
+          template = template.replace("<","&lt;");
+          asteriskip = asteriskip.replace("<","&lt;");
+          $.ajax({
+               url : '/index.php?menu=myex_config&action=qrcode&rawmode=yes&template='+template+'&asteriskip='+asteriskip,
+               type : 'GET',
+           }).always(function(data) {
+              console.log(data);
+              $('#imgqrcode').attr('src','data:image/png;base64,'+data).show();
+           });
+
+
+      });
+
+      var content = "<input type='text' class='bss-input' onKeyDown='event.stopPropagation();' onKeyPress='addSelectInpKeyPress(this,event)' onClick='event.stopPropagation()' placeholder='"+_tr('Add Hostname')+"'> <span class='glyphicon glyphicon-plus addnewicon' onClick='addSelectItem(this,event,1);'></span>";
+      var divider = $('<option/>').addClass('divider').data('divider', true);
+      var addoption = $('<option/>', {class: 'addItem'}).data('content', content);
+      var hostoption = $('<option/>').data('content', window.location.host).val(window.location.host);
+      $('.selectpicker').selectpicker();
+      if($('.selectpickeradd option[value="'+window.location.host+'"]').length==0) {
+          $('.selectpickeradd').append(hostoption);
+      }
+      $('.selectpickeradd').append(divider).append(addoption).selectpicker();
+
+
          $( "#slider" ).slider({
             range: "min",
             min: 0,
@@ -72,3 +101,11 @@ $(document).ready(
     }
 );
 
+
+function _tr(texto) {
+   if(typeof(lang[texto])=='undefined') {
+       return texto;
+   } else {
+       return lang[texto];
+   }
+}
