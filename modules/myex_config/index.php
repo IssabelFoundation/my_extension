@@ -2,7 +2,7 @@
   /* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
   Codificación: UTF-8
   +----------------------------------------------------------------------+
-  | Issabel version 4.0.0-31                                               |
+  | Issabel version 4.0.0-31                                             |
   | http://www.issabel.org                                               |
   +----------------------------------------------------------------------+
   | Copyright (c) 2006 Palosanto Solutions S. A.                         |
@@ -19,7 +19,8 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: index.php,v 1.1 2010-08-09 10:08:51 Mercy Anchundia manchundia@palosanto.com Exp $ */
+  $Id: index.php, Sun 03 Sep 2023 01:29:14 PM EDT, nicolas@issabel.com
+*/
 //include issabel framework
 include_once "libs/paloSantoForm.class.php";
 
@@ -52,11 +53,12 @@ function _moduleContent(&$smarty, $module_name)
     $extension = $pACL->getUserExtension($user);
     $isAdministrator = $pACL->isUserAdministratorGroup($user);
     if($extension=="" || is_null($extension)){
-	if($isAdministrator) 
-	  $smarty->assign("mb_message", "<b>"._tr("no_extension")."</b>");
-	else
-	  $smarty->assign("mb_message", "<b>"._tr("contact_admin")."</b>");
-	return "";
+	  if($isAdministrator) {
+	    $smarty->assign("mb_message", "<b>"._tr("no_extension")."</b>");
+	  } else {
+	    $smarty->assign("mb_message", "<b>"._tr("contact_admin")."</b>");
+      }
+      return "<script>var lang={};</script>";
     }
 
     $pConfig = new paloConfig("/etc", "amportal.conf", "=", "[[:space:]]*=[[:space:]]*");
