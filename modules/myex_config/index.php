@@ -94,7 +94,7 @@ function _moduleContent(&$smarty, $module_name)
     }
 
     //actions
-    $action = $_REQUEST['action'];
+    $action = isset($_REQUEST['action'])?$_REQUEST['action']:'';
     $content = "";
 
     switch($action){
@@ -106,12 +106,18 @@ function _moduleContent(&$smarty, $module_name)
             } else {
                 $secret = '';
             }
+
+            $pMyExtension = new paloSantoMyExtension();
+            $pMyExtension->AMI_OpenConnect();
+            $extensionCID = $pMyExtension->getExtensionCID($extension);
+            $pMyExtension->AMI_CloseConnect();
+
             $template = $_REQUEST['template'];
             $asteriskip = $_REQUEST['asteriskip'];
             $template = preg_replace("/</","",$template);
             $asteriskip = preg_replace("/</","",$asteriskip);
             $xmltemplate = $myQR->getTemplate($template);
-            $qrcode = $myQR->generateQR($extension,$name,$secret,$asteriskip,$xmltemplate);
+            $qrcode = $myQR->generateQR($extension,$extensionCID,$secret,$asteriskip,$xmltemplate);
             die($qrcode);
             break;
         case "save_new":
@@ -157,7 +163,7 @@ function viewFormMyExtension($smarty, $module_name, $local_templates_dir, $arrCo
     $smarty->assign("FORWARD", _tr("Forward"));
     $smarty->assign("RECORDING", _tr("Recording"));
     $smarty->assign("icon", "images/list.png");//extension
-    $smarty->assign("EXTENSION",_tr("SETTINGS FOR YOUR EXTENSION:")." ".$extensionCID." (".$extension.")");//extension
+    $smarty->assign("EXTENSION",$extensionCID." (".$extension.")");
     $smarty->assign("TAG_CALL_FORW_CONF", _tr("Call Forward Configuration"));
     $smarty->assign("TAG_CALL_MON_SET", _tr("Call Monitor Settings"));
     $smarty->assign("recording_priority_value",$_DATA['recording_priority']);
