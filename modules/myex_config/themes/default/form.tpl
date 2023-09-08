@@ -7,10 +7,10 @@ var lang={};
 
 <div class='container-fluid'>
 <div class='row'>
-<div class='col-md-4'>
+<div class='col-md-6'>
 <legend>{$EXTENSION}</legend>
 </div>
-<div class='col-md-7'>
+<div class='col-md-5'>
         {if $mode eq 'input'}
         <td align="left">
             <input class="button" type="submit" name="save_new" value="{$SAVE}">&nbsp;&nbsp;
