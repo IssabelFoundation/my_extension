@@ -2,17 +2,16 @@
 
 Summary: Issabel My Extension 
 Name: issabel-my_extension
-Version: 4.0.0
-Release: 2
+Version: 5.0.0
+Release: 1
 License: GPL
 Group:   Applications/System
 Source0: issabel-%{modname}-%{version}.tar.gz
 #Source0: %{modname}_%{version}-4.tgz
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 BuildArch: noarch
-Requires(pre): issabel-framework >= 2.2.0-18
+Requires(pre): issabel-framework >= 5.0.0-1
 Requires: yum
-#Requires: issabelPBX >= 2.11.0-1
 
 Obsoletes: elastix-my_extension
 Provides: elastix-my_extension
