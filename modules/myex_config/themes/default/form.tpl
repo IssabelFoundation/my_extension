@@ -98,7 +98,6 @@ var lang={};
     </div>
     {if $SHOWQR == 1}
     <div role="tabpanel" class="tab-pane" id="qrcode">
-      <form class = "form-horizontal" role = "form">
          <div class = "form-group" style='display:flex;'>
             <label for = "template" class = "col-sm-3 control-label">{$BRAND}</label>
             <div class = "col-sm-8">
@@ -116,7 +115,7 @@ var lang={};
             {foreach $ALL_IP as $ip}
               <option value='{$ip}'>{$ip}</option>
             {/foreach}
-            <select>
+            </select>
             </div>
          </div>
          <div class = "form-group">
@@ -124,7 +123,6 @@ var lang={};
                <button id="btngenerate" type = "submit" class = "btn btn-default">{$GENERATEQR}</button>
             </div>
          </div>
-      </form>
       <img id='imgqrcode' src='' />
     </div>
     {/if}
@@ -132,5 +130,4 @@ var lang={};
  
   </div>
 
-</div>
 
