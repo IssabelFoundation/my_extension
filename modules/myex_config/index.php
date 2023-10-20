@@ -95,7 +95,7 @@ function _moduleContent(&$smarty, $module_name)
 
     //actions
     $action = isset($_REQUEST['action'])?$_REQUEST['action']:'';
-    if($action=='') {
+    if( $action=='' ) {
         if(isset($_REQUEST['save_new'])) {
             $action='save_new';
         }
