@@ -19,7 +19,7 @@
   +----------------------------------------------------------------------+
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
-  $Id: index.php, Sun 03 Sep 2023 01:29:14 PM EDT, nicolas@issabel.com
+  $Id: index.php, Fri 20 Oct 2023 10:28:03 AM EDT, nicolas@issabel.com
 */
 //include issabel framework
 include_once "libs/paloSantoForm.class.php";
@@ -53,10 +53,10 @@ function _moduleContent(&$smarty, $module_name)
     $extension = $pACL->getUserExtension($user);
     $isAdministrator = $pACL->isUserAdministratorGroup($user);
     if($extension=="" || is_null($extension)){
-	  if($isAdministrator) {
-	    $smarty->assign("mb_message", "<b>"._tr("no_extension")."</b>");
-	  } else {
-	    $smarty->assign("mb_message", "<b>"._tr("contact_admin")."</b>");
+      if($isAdministrator) {
+          $smarty->assign("mb_message", "<b>"._tr("no_extension")."</b>");
+      } else {
+          $smarty->assign("mb_message", "<b>"._tr("contact_admin")."</b>");
       }
       return "<script>var lang={};</script>";
     }
@@ -97,8 +97,8 @@ function _moduleContent(&$smarty, $module_name)
     $action = isset($_REQUEST['action'])?$_REQUEST['action']:'';
     if($action=='') {
         if(isset($_REQUEST['save_new'])) {
-	    $action='save_new';
-	}
+            $action='save_new';
+        }
     }
     $content = "";
     switch($action){
@@ -231,20 +231,19 @@ function saveNewMyExtension($smarty, $module_name, $local_templates_dir, $arrCon
             
             if($statusCW && $statusDND && $statusCF && $statusCFU && $statusCFB && $statusRecording){
                 $smarty->assign("mb_message",_tr("Your configuration has been saved correctly"));
-            }
-            else{
+            } else {
                 $smarty->assign("mb_title", _tr("Error"));
                 $smarty->assign("mb_message", $message);
             }
-         }
-         else{
-	    if($isAdministrator)
-		$message =  "<b>"._tr("no_extension")."</b>";
-	    else
-		$message =  "<b>"._tr("contact_admin")."</b>";
+         } else {
+             if($isAdministrator) {
+                 $message =  "<b>"._tr("no_extension")."</b>";
+             } else {
+                 $message =  "<b>"._tr("contact_admin")."</b>";
+             }
             
-            $smarty->assign("mb_title", _tr("Notice"));
-            $smarty->assign("mb_message", $message);
+             $smarty->assign("mb_title", _tr("Notice"));
+             $smarty->assign("mb_message", $message);
         }
      }
     return viewFormMyExtension($smarty, $module_name, $local_templates_dir, $arrConf, $extension);
