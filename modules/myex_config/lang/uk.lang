@@ -1,0 +1,77 @@
+<?php
+/* vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
+   Codificación: UTF-8
+  +----------------------------------------------------------------------+
+  | Issabel Version 4.0                                                  |
+  | http://www.issabel.org                                               |
+  +----------------------------------------------------------------------+
+  | Copyright (c) 2017 Issabel Foundation                                |
+  | Copyright (c) 2006 Palosanto Solutions S. A.                         |
+  +----------------------------------------------------------------------+
+  | The contents of this file are subject to the General Public License  |
+  | (GPL) Version 2 (the "License"); you may not use this file except in |
+  | compliance with the License. You may obtain a copy of the License at |
+  | http://www.opensource.org/licenses/gpl-license.php                   |
+  |                                                                      |
+  | Software distributed under the License is distributed on "AS IS"     |
+  | basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See  |
+  | the License for the specific language governing rights and           |
+  | limitations under the License.                                       |
+  +----------------------------------------------------------------------+
+  | The Initial Developer of the Original Code is PaloSanto Solutions    |
+  |                                                                      |
+  | Translated by: LLC LeNET                                             |
+  | Email: support@lenet.com.ua                                          |
+  +----------------------------------------------------------------------+
+  $Id: uk.lang,v 1.7 2023-10-29 22:24:46 LLC LENET support@lenet.ua Exp $ */
+global $arrLangModule;
+$arrLangModule=array(
+	"My Extension" => "Мій Номер",
+	"no_extension" => "Немає внутрішнього номера, пов’язаного з поточним користувачем. Ви можете пов’язати внутрішній номер зі своїм користувачем, натиснувши <a href=\"javascript: openWindow('index.php?menu=userlist&amp;action=edit_userExtension&amp;rawmode=yes');\">ТУТ</a>",
+	"Call Waiting" => "Очікування Виклику",
+	"Do Not Disturb" => "Не Турбувати",
+	"Error processing CallWaiting" => "Обробка помилок Очікування Виклику",
+	"Error processing Do Not Disturb" => "Обробка помилок Не Турбувати",
+	"Save Configuration" => "Зберегти Конфігурацію",
+	"Your configuration has been saved correctly" => "Ваша конфігурація збережена правильно",
+	"Call Forward" => "Переадресація Дзвінка",
+	"Call Forward on Unavailable" => "Переадресація Дзвінка при Недоступності",
+	"Call Forward on Busy" => "Переадресація дзвінка якщо Зайнято",
+	"Configure a phone number here..." => "Налаштуйте номер телефону тут...",
+	"Validation Error" => "Помилка Валідації",
+	"Please check your phone number" => "Будь ласка перевірте свій номер телефону",
+	"Please check your phone number for Call Forward" => "Будь ласка перевірте свій номер телефону для Переадресації Дзвінків",
+	"Please check your phone number for Call Forward On Unavailable" => "Будь ласка перевірте свій номер телефону на наявність Переадресації Дзвінків у разі Недоступності",
+	"Please check your phone number for Call Forward On Busy" => "Будь ласка, перевірте свій номер телефону на предмет Переадресації Дзвінків у разі Зайнятості",
+	"Always" => "Завжди",
+	"Never" => "Ніколи",
+	"On-Demand" => "На Вимогу",
+	"Inbound External Calls" => "Вхідні Зовнішні Дзвінки",
+	"Outbound External Calls" => "Вихідні Зовнішні Дзвінки",
+	"Inbound Internal Calls" => "Вхідні Внутрішні Дзвінки",
+	"Outbound Internal Calls" => "Вихідні Внутрішні Дзвінки",
+	"On Demand Recording" => "Запис за Запитом",
+	"Record Priority Policy" => "Політика Пріоритету Запису",
+	"Don't Care" => "Мені Байдуже",
+	"Disable" => "Вимкнути",
+	"Enable" => "Увімкнути",
+	"SETTINGS FOR YOUR EXTENSION:" => "НАЛАШТУВАННЯ ВАШОГО ВНУТРІШНЬОГО НОМЕРУ:",
+	"contact_admin" => "З поточним користувачем не пов'язаний внутрішній номер. Будь ласка, зверніться до адміністратора, щоб призначити йому внутрішній номер",
+	"Inbound External Calls option is not valid" => "Опція \"Вхідні Зовнішні Дзвінки\" не дійсна",
+	"Outbound External Calls option is not valid" => "Опція \"Вихідні Зовнішні Дзвінки\" не дійсна",
+	"Inbound Internal Calls option is not valid" => "Опція \"Вхідні Внутрішні Дзвінки\" не дійсна",
+	"Outbound Internal Calls option is not valid" => "Опція \"Вихідні Внутрішні Дзвінки\" не дійсна",
+	"On Demand Recording  option is not valid" => "Опція \"Запис на Вимогу\" не дійсна",
+	"Record Priority Policy is not numeric" => "Політика Пріоритету Запису не є числовою",
+	"Record Priority Policy must be a value between 0 and 20" => "Політика Пріоритету Запису має бути значенням від 0 до 20",
+	"Error processing Recording options" => "Обробка помилок Параметри Запису",
+	"Forward" => "Переадресація",
+	"General" => "Загальний",
+	"Recording" => "Запис",
+	"QR Code" => "QR Код",
+	"Phone Brand" => "Марка Телефону",
+	"Issabel Host/IP Address" => "Issabel Хост/IP Адреса",
+	"Display QR Code" => "Відобразити QR Код",
+	"Add Hostname" => "Додати Хост",
+);
+?>
